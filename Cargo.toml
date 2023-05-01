@@ -8,3 +8,4 @@ edition = "2021"
 [dependencies]
 clap = { version = "4.2.5", features = ["derive"] }
 home = "0.5.5"
+skim = "0.10.4"
