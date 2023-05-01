@@ -27,6 +27,10 @@ fn main() {
             .unwrap();
     } else {
         println!("{}", &full_path_worktree);
+        Command::new("tmux")
+            .args(["rename-window", &worktree_name])
+            .spawn()
+            .unwrap();
     }
     return;
 }
