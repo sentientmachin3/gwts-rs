@@ -23,18 +23,6 @@ fn list_worktrees(repo_root: &Path, repo_name: &str) -> Vec<String> {
     return worktrees;
 }
 
-pub fn verify_repo_root(str_path: &String) -> Result<()> {
-    let expanded_path = expand_tilde(str_path);
-    let path = Path::new::<String>(&expanded_path);
-    if !path.exists() || !path.is_dir() {
-        return Err(Error::new(
-            std::io::ErrorKind::InvalidInput,
-            "Invalid directory path",
-        ));
-    }
-    return Ok(());
-}
-
 pub fn worktree_names(repo_root: &Path) -> Result<Vec<String>> {
     let mut repo_names = Vec::new();
     for repo in fs::read_dir(repo_root)? {
@@ -55,6 +43,12 @@ pub fn worktree_names(repo_root: &Path) -> Result<Vec<String>> {
                 }
             }
         }
+    }
+    if repo_names.len() == 0 {
+        return Err(Error::new(
+            std::io::ErrorKind::InvalidInput,
+            "No repos in the base folder",
+        ));
     }
     return Ok(repo_names);
 }
