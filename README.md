@@ -1,5 +1,13 @@
 # gwts-rs
-Git worktree switcher written in Rust for fun.
-This is a rewrite in Rust of another project [gwt-switcher](https://github.com/sentientmachin3/gwt-switcher), for fun and wisdom.
+Git worktree switcher based on `fzf`, written in Rust for fun. 
 
-The usage is the same, see that repo for reference.
+## Usage
+Integrates with tmux session, you can use it like this:
+
+`gwts-rs [-s] [-w] [-r root]`
+
+where:
+- `-w` open the selected worktree in a new tmux window
+- `-s` open the selected worktree in a new tmux session
+- `-r root` searches for repos in the `root` directory
+
