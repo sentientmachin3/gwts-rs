@@ -42,6 +42,11 @@ fn main() {
             .args(["neww", "-n", &worktree_name, "-c", &full_path_worktree])
             .spawn()
             .unwrap();
+    } else if cli_args.new_session {
+        Command::new("tmux")
+            .args(["new", "-n", &worktree_name, "-c", &full_path_worktree, "-d"])
+            .spawn()
+            .unwrap();
     } else {
         println!("{}", &full_path_worktree);
         Command::new("tmux")
